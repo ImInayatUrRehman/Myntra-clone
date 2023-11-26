@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import Providers from "./store/providers";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,10 +16,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
+      <body suppressHydrationWarning={true} className={inter.className}>
+        <Providers>
+          <Header />
+          
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
